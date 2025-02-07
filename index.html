@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,30 @@
     <link rel="shortcut icon" href="img/coin.png" type="image/x-icon">
     <title>CoinTrack</title>
 </head>
+
 <body>
 
-    <div class="container">
-        <div class="moeda" id="moeda1">
-            <h2>Moeda 1</h2>
-            <canvas id="grafico1"></canvas> <!-- Aqui entra o gráfico -->
-        </div>
-
-        <div class="moeda" id="moeda2">
-            <h2>Moeda 2</h2>
-            <canvas id="grafico2"></canvas> <!-- Aqui entra o gráfico -->
-        </div>
-    </div>
+    <main>
+        <section class="quadrado">
+            <select id="moedaSelect1">
+                <option value="">Selecione uma moeda</option>
+            </select>
     
+            <h2>Moedas</h2>
+            <div class="moeda" id="moeda1"></div>
+        </section>
+    
+        <section class="quadrado">
+            <select id="moedaSelect2">
+                <option value="">Selecione uma moeda</option>
+            </select>
+    
+            <h2>Moedas</h2>
+            <div class="moeda" id="moeda2"></div>
+        </section>
+    </main>
 
-    <script src="script.js"></script>
+     <script src="script.js"></script> 
 </body>
+
 </html>
