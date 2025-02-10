@@ -27,3 +27,4 @@ Copiar
 Editar
 cd cointrack
 Abra o arquivo index.html no navegador
+
