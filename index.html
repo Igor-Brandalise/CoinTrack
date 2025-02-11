@@ -1,37 +1,31 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="img/coin.png" type="image/x-icon">
-    <title>CoinTrack</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Conversor de Moedas</title>
 </head>
-
 <body>
 
-    <main>
-        <section class="quadrado">
-            <select id="moedaSelect1">
-                <option value="">Selecione uma moeda</option>
-            </select>
-    
-            <h2>Moedas</h2>
-            <div class="moeda" id="moeda1"></div>
-        </section>
-    
-        <section class="quadrado">
-            <select id="moedaSelect2">
-                <option value="">Selecione uma moeda</option>
-            </select>
-    
-            <h2>Moedas</h2>
-            <div class="moeda" id="moeda2"></div>
-        </section>
-    </main>
+    <h1>Conversor de Moedas</h1>
 
-     <script src="script.js"></script> 
+    <div class="container">
+        <!-- Primeiro quadrado -->
+        <div class="quadrado">
+            <select id="moeda1"></select>
+            <input type="number" id="valor1" value="1" min="0.01">
+        </div>
+
+        <!-- Segundo quadrado -->
+        <div class="quadrado">
+            <select id="moeda2"></select>
+            <input type="text" id="valor2" readonly>
+        </div>
+    </div>
+
+
+        <script src="script.js"></script>
 </body>
-
 </html>
