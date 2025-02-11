@@ -1,64 +1,79 @@
 const moedasFiduciarias = ["USD", "BRL", "EUR", "GBP", "JPY", "CAD", "AUD", "CHF"];
-let criptosDisponiveis = [];
+        let criptosDisponiveis = [];
 
-// Função para buscar todas as criptos disponíveis
-async function carregarCriptos() {
-    const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd";
-    const resposta = await fetch(url);
-    const dados = await resposta.json();
-    criptosDisponiveis = dados.map(moeda => moeda.id);
-    preencherSelects();
-}
+        async function carregarCriptos() {
+            const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd";
+            const resposta = await fetch(url);
+            const dados = await resposta.json();
+            criptosDisponiveis = dados.map(moeda => moeda.id.toUpperCase());
+            configurarDropdowns();
+        }
 
-// Preencher os selects com moedas fiduciárias e criptos
-function preencherSelects() {
-    const selects = [document.getElementById("moeda1"), document.getElementById("moeda2")];
-    selects.forEach(select => {
-        moedasFiduciarias.forEach(moeda => {
-            let option = document.createElement("option");
-            option.value = moeda;
-            option.textContent = moeda;
-            select.appendChild(option);
-        });
+        function configurarDropdowns() {
+            const entradas = [
+                { input: document.getElementById("search1"), dropdown: document.getElementById("dropdown1") },
+                { input: document.getElementById("search2"), dropdown: document.getElementById("dropdown2") }
+            ];
 
-        criptosDisponiveis.forEach(cripto => {
-            let option = document.createElement("option");
-            option.value = cripto;
-            option.textContent = cripto;
-            select.appendChild(option);
-        });
-    });
-}
+            entradas.forEach(({ input, dropdown }) => {
+                let listaMoedas = [...moedasFiduciarias, ...criptosDisponiveis];
 
-// Função para buscar a taxa de câmbio
-async function buscarTaxaDeCambio(moedaOrigem, moedaDestino) {
-    if (moedasFiduciarias.includes(moedaOrigem) && moedasFiduciarias.includes(moedaDestino)) {
-        const url = `https://api.frankfurter.app/latest?from=${moedaOrigem}&to=${moedaDestino}`;
-        const resposta = await fetch(url);
-        const dados = await resposta.json();
-        return dados.rates[moedaDestino] || 1;
-    } else {
-        const url = `https://api.coingecko.com/api/v3/simple/price?ids=${moedaOrigem}&vs_currencies=${moedaDestino}`;
-        const resposta = await fetch(url);
-        const dados = await resposta.json();
-        return dados[moedaOrigem]?.[moedaDestino] || 1;
-    }
-}
+                function atualizarLista(filtro) {
+                    dropdown.innerHTML = "";
+                    listaMoedas
+                        .filter(moeda => moeda.toUpperCase().includes(filtro.toUpperCase()))
+                        .forEach(moeda => {
+                            let item = document.createElement("div");
+                            item.textContent = moeda;
+                            item.onclick = () => {
+                                input.value = moeda;
+                                dropdown.style.display = "none";
+                                atualizarConversao();
+                            };
+                            dropdown.appendChild(item);
+                        });
+                }
 
-// Atualizar conversão ao mudar o valor ou a moeda
-async function atualizarConversao() {
-    const moedaOrigem = document.getElementById("moeda1").value;
-    const moedaDestino = document.getElementById("moeda2").value;
-    const valorOrigem = parseFloat(document.getElementById("valor1").value);
+                input.addEventListener("focus", () => {
+                    dropdown.style.display = "block";
+                    atualizarLista(input.value);
+                });
 
-    const taxa = await buscarTaxaDeCambio(moedaOrigem, moedaDestino);
-    document.getElementById("valor2").value = (valorOrigem * taxa).toFixed(2);
-}
+                input.addEventListener("input", () => atualizarLista(input.value));
 
-// Adicionar eventos
-document.getElementById("moeda1").addEventListener("change", atualizarConversao);
-document.getElementById("moeda2").addEventListener("change", atualizarConversao);
-document.getElementById("valor1").addEventListener("input", atualizarConversao);
+                document.addEventListener("click", (e) => {
+                    if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.style.display = "none";
+                    }
+                });
+            });
+        }
 
-// Iniciar o carregamento das criptos e configurar os selects
-carregarCriptos();
+        async function buscarTaxaDeCambio(moedaOrigem, moedaDestino) {
+            if (moedasFiduciarias.includes(moedaOrigem) && moedasFiduciarias.includes(moedaDestino)) {
+                const url = `https://api.frankfurter.app/latest?from=${moedaOrigem}&to=${moedaDestino}`;
+                const resposta = await fetch(url);
+                const dados = await resposta.json();
+                return dados.rates[moedaDestino] || 1;
+            } else {
+                const url = `https://api.coingecko.com/api/v3/simple/price?ids=${moedaOrigem.toLowerCase()}&vs_currencies=${moedaDestino.toLowerCase()}`;
+                const resposta = await fetch(url);
+                const dados = await resposta.json();
+                return dados[moedaOrigem.toLowerCase()]?.[moedaDestino.toLowerCase()] || 1;
+            }
+        }
+
+        async function atualizarConversao() {
+            const moedaOrigem = document.getElementById("search1").value;
+            const moedaDestino = document.getElementById("search2").value;
+            const valorOrigem = parseFloat(document.getElementById("valor1").value);
+
+            if (!moedaOrigem || !moedaDestino) return;
+
+            const taxa = await buscarTaxaDeCambio(moedaOrigem, moedaDestino);
+            document.getElementById("valor2").value = (valorOrigem * taxa).toFixed(2);
+        }
+
+        document.getElementById("valor1").addEventListener("input", atualizarConversao);
+
+        carregarCriptos();
