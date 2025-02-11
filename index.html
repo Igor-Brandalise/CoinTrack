@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/coin.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <title>Conversor de Moedas</title>
+    <link rel="shortcut icon" href="img/coin.png" type="image/x-icon">
+    <title>Coin Track</title>
+ 
 </head>
 <body>
 
@@ -14,18 +15,19 @@
     <div class="container">
         <!-- Primeiro quadrado -->
         <div class="quadrado">
-            <select id="moeda1"></select>
+            <input type="text" id="search1" placeholder="Pesquisar moeda..." autocomplete="off">
+            <div class="dropdown" id="dropdown1"></div>
             <input type="number" id="valor1" value="1" min="0.01">
         </div>
 
         <!-- Segundo quadrado -->
         <div class="quadrado">
-            <select id="moeda2"></select>
+            <input type="text" id="search2" placeholder="Pesquisar moeda..." autocomplete="off">
+            <div class="dropdown" id="dropdown2"></div>
             <input type="text" id="valor2" readonly>
         </div>
     </div>
 
-
-        <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
