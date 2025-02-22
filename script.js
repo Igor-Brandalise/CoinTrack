@@ -2,7 +2,7 @@
 const moedasFiduciarias = ["USD", "BRL", "EUR", "GBP", "JPY", "CAD", "AUD", "CHF"];
 
 // Array que armazenará as criptomoedas disponíveis, carregadas dinamicamente via API
-let criptosDisponiveis = [];
+let criptosDisponiveis = [""];
 
 // Função assíncrona para buscar criptomoedas disponíveis na API CoinGecko
 async function carregarCriptos() {
