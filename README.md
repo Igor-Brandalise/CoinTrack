@@ -9,22 +9,9 @@ CoinTrack é um projeto simples em HTML, CSS e JavaScript puro para visualizar e
 
 ## 🚀 Tecnologias Utilizadas
 - HTML 🏗️ para estruturação da página
-- CSS 🎨 para estilização
+- CSS 🎨 para estilização, utilizando **Tailwind CSS** para uma estilização mais rápida e responsiva
 - JavaScript ⚡ para consumir as APIs e manipular os dados
 
 ## 🔗 APIs Utilizadas
-- **CoinGecko** para criptomoedas
-- **Open Exchange Rates API** para moedas fiduciárias
-
-## 💻 Como Usar
-1. Clone este repositório
-   ```bash
-   git clone https://github.com/Igor-Brandalise/cointrack.git
-Acesse a pasta do projeto
-
-bash
-Copiar
-Editar
-cd cointrack
-Abra o arquivo index.html no navegador
-
+- **CoinGecko API** para criptomoedas, fornecendo os preços e informações de diversas moedas digitais em tempo real.
+- **Frankfurter API** para moedas fiduciárias, como USD, BRL, EUR, etc.
