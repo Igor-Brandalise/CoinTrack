@@ -7,23 +7,21 @@
     <title>Coin Track</title>
     <link rel="shortcut icon" href="img/coin.png" type="image/x-icon">
     <link rel="stylesheet" href="src/output.css">
-
 </head>
 
-<body class="flex justify-center bg-[var(--background)] ">
+<body class="flex justify-center bg-[var(--background)]">
 
-    <section class="font-[Poppins] text-lg text-center bg-[var(--background-sec)] border-2 text-white w-[700px] mt-30 shadow-[var(--shadow-box)] rounded-[5px] p-3.5">
+    <section class="font-[Poppins] text-lg text-center bg-[var(--background-sec)] border-2 text-white w-[90%] sm:w-[700px] mt-12 shadow-[var(--shadow-box)] rounded-[5px] p-4">
 
-        <h1 class="text-2xl mt-12 ">Conversor de Moedas</h1>
+        <h1 class="text-2xl mt-8 ">Conversor de Moedas</h1>
 
-        <div class="flex justify-center gap-5 mt-14">
+        <div class="flex flex-col sm:flex-row justify-center gap-5 mt-12">
             <!-- Primeiro quadrado -->
             <div class="quadrado">
 
-                <input type="text" id="search1" placeholder="Pesquisar moeda..." autocomplete="off" class="caixa">
+                <input type="text" id="search1" placeholder="Pesquisar moeda..." autocomplete="off" class="caixa w-full">
 
-
-                <div class="dropdown " id="dropdown1"></div>
+                <div class="dropdown" id="dropdown1"></div>
 
                 <input type="number" id="valor1" value="1" min="0.01" class="result">
 
@@ -32,7 +30,7 @@
             <!-- Segundo quadrado -->
             <div class="quadrado">
 
-                <input type="text" id="search2" placeholder="Pesquisar moeda..." autocomplete="off" class="caixa">
+                <input type="text" id="search2" placeholder="Pesquisar moeda..." autocomplete="off" class="caixa w-full">
 
                 <div class="dropdown" id="dropdown2"></div>
 
@@ -41,6 +39,7 @@
             </div>
         </div>
     </section>
+
     <script src="script.js"></script>
 </body>
 
