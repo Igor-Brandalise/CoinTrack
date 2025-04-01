@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --background: oklch(0.21 0.006 285.885);
+  --background-sec: oklch(0.21 0.006 285.885);
+  --borda: oklch(0.709 0.01 56.259);
+  --shadow-box:  rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  --shadow-sec:  rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.quadrado {
+  @apply p-5 border-1 border-[var(--borda)] bg-amber-50 text-black mb-10 m-5 rounded-2xl shadow-[var(--shadow-sec)];
+}
+
+.caixa {
+  @apply w-full border-2 rounded-2xl p-1 text-center h-12;
+}
+
+.dropdown {
+  @apply absolute hidden bg-white hover:bg-fuchsia-100 border-1 border-[var(--borda)]  max-h-40 overflow-y-auto z-10 mt-2.5 cursor-pointer p-1.5 min-w-52 rounded-[5px];
+}
+
+.result {
+  @apply mt-4 h-10 bg-amber-200 rounded-[10px] text-center p-1;
+}
