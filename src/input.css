@@ -5,8 +5,11 @@
   --background: oklch(0.21 0.006 285.885);
   --background-sec: oklch(0.21 0.006 285.885);
   --borda: oklch(0.709 0.01 56.259);
-  --shadow-box:  rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-  --shadow-sec:  rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  --shadow-box: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  --shadow-sec: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .quadrado {
