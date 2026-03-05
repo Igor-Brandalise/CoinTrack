@@ -7,7 +7,7 @@ let criptosDisponiveis = [];
 // API CoinGecko
 async function carregarCriptos() {
     try {
-        const url = "https://api.coingeconst resposta = await fetch(url);ko.com/api/v3/coins/markets?vs_currency=usd"; 
+        const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd"; 
         const resposta = await fetch(url); 
         const dados = await resposta.json();
 
