@@ -1,27 +1,27 @@
-// Lista de moedas fiduciárias (moedas tradicionais emitidas por governos)
+
 const moedasFiduciarias = ["USD", "BRL", "EUR", "GBP", "JPY", "CAD", "AUD", "CHF"];
 
-// Array que armazenará as criptomoedas disponíveis, carregadas dinamicamente via API
+
 let criptosDisponiveis = [];
 
-// Função assíncrona para buscar criptomoedas disponíveis na API CoinGecko
+// API CoinGecko
 async function carregarCriptos() {
     try {
-        const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd"; // Endpoint para obter criptomoedas
-        const resposta = await fetch(url); // Faz a requisição à API
-        const dados = await resposta.json(); // Converte a resposta para JSON
+        const url = "https://api.coingeconst resposta = await fetch(url);ko.com/api/v3/coins/markets?vs_currency=usd"; 
+        const resposta = await fetch(url); 
+        const dados = await resposta.json();
 
         if (Array.isArray(dados)) {
             criptosDisponiveis = dados.map(moeda => moeda.id.toUpperCase());
         }
 
-        configurarDropdowns(); // Atualiza os dropdowns após carregar as criptos
+        configurarDropdowns(); 
     } catch (erro) {
         console.error("Erro ao carregar criptomoedas:", erro);
     }
 }
 
-// Função que configura os dropdowns para permitir busca e seleção de moedas
+
 function configurarDropdowns() {
     const entradas = [
         { input: document.getElementById("search1"), dropdown: document.getElementById("dropdown1") },
@@ -74,8 +74,8 @@ function configurarDropdowns() {
     });
 }
 
-
-// Função assíncrona para buscar a taxa de câmbio entre duas moedas
+ 
+// API frankfurter
 async function buscarTaxaDeCambio(moedaOrigem, moedaDestino) {
     try {
         if (moedasFiduciarias.includes(moedaOrigem) && moedasFiduciarias.includes(moedaDestino)) {
