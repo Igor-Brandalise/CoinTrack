@@ -79,7 +79,7 @@ function configurarDropdowns() {
 async function buscarTaxaDeCambio(moedaOrigem, moedaDestino) {
     try {
         if (moedasFiduciarias.includes(moedaOrigem) && moedasFiduciarias.includes(moedaDestino)) {
-            const url = `https://api.frankfurter.app/latest?from=${moedaOrigem}&to=${moedaDestino}`;
+            const url = `https://api.frankfurter.dev/v1/latest?from=${moedaOrigem}&to=${moedaDestino}`;
             const resposta = await fetch(url);
             const dados = await resposta.json();
             return dados.rates[moedaDestino] || 1;
